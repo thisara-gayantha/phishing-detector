@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Phishing Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="icon">🔒</div>
+            <h1>Phishing Detector</h1>
+            <p class="subtitle">Protect yourself from malicious URLs</p>
+        </div>
+
+        <div class="card">
+            <form method="POST" class="form-group">
+                <div class="input-wrapper">
+                    <input type="text" name="url" placeholder="Paste your URL here..." required class="url-input">
+                    <button type="submit" class="btn-check">
+                        <span>🔍 Check URL</span>
+                    </button>
+                </div>
+            </form>
+
+            {% if result %}
+                <div class="result-section">
+                    <div class="result-card {% if '🚨' in result %}danger{% elif '⚠️' in result %}warning{% else %}success{% endif %}">
+                        <div class="result-icon">
+                            {% if '🚨' in result %}🚨{% elif '⚠️' in result %}⚠️{% else %}✅{% endif %}
+                        </div>
+                        <h2 class="result-text">{{ result }}</h2>
+                    </div>
+
+                    {% if reasons %}
+                        <div class="reasons-section">
+                            <h3>Detection Details:</h3>
+                            <div class="reasons-grid">
+                                {% for reason in reasons %}
+                                    <div class="reason-item">
+                                        <span class="reason-icon">⚡</span>
+                                        <span class="reason-text">{{ reason }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="footer">
+            <p>Stay safe online. Always verify URLs before clicking.</p>
+        </div>
+    </div>
+</body>
+</html>
