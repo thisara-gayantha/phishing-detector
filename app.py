@@ -1,4 +1,4 @@
-venvfrom flask import Flask, render_template, request
+from flask import Flask, render_template, request
 from detector import analyze
 
 app = Flask(__name__)
