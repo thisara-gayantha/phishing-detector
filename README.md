@@ -152,7 +152,6 @@ The detector analyzes URLs across multiple security dimensions:
 - [ ] Browser extension
 - [ ] API endpoint for programmatic access
 - [ ] Database to log checked URLs
-- [ ] Dark mode support
 - [ ] Email scanning integration
 
 ## 📄 License
